@@ -6,11 +6,11 @@ const Home: NextPage = () => {
             <div className="bg-white sm:hover:bg-pink-800 sm:bg-red-400 md:bg-teal-400 lg:bg-indigo-400 xl:bg-yellow-400 2xl:bg-pink-500  p-6 rounded-3xl shadow-xl">
                 <span className="font-semibold text-2xl">Select Item</span>
                 <ul>
-                    <div className="flex justify-between my-2 ">
+                    <div className="flex justify-between my-2">
                         <span className="text-gray-500">Grey Chair</span>
                         <span className="font-semibold">$19</span>
                     </div>
-                    <div className="flex justify-between my-2 ">
+                    <div className="flex justify-between my-2">
                         <span className="text-gray-500">Grey Chair</span>
                         <span className="font-semibold">$19</span>
                     </div>
