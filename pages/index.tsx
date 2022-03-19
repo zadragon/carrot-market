@@ -11,7 +11,7 @@ const Home: NextPage = () => {
                         <span className="font-semibold">$19</span>
                     </div>
                     <div className="flex justify-between my-2">
-                        <span className="text-gray-500">Grey Chair</span>
+                        <span className="text-gray-500">Grey Chair23</span>
                         <span className="font-semibold">$19</span>
                     </div>
                 </ul>
