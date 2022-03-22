@@ -1,14 +1,31 @@
 import {useState} from "react";
+import {useForm} from "react-hook-form";
 
-export default function Forms(){
-    const [username, setUsername] = useState();
-    const [username, setUsername] = useState();
-    const [username, setUsername] = useState();
-    return(
+export default function Forms() {
+    const {register, watch} = useForm();
+    console.log(watch())
+    return (
         <form>
-            <input type="text"/>
-            <input type="email"/>
-            <input type="password"/>
+            <input
+                {...register("usename")}
+                type="text"
+                placeholder="Username"
+                required
+            />
+            <input
+                {...register("email")}
+                type="email"
+                placeholder="Email"
+                required
+            />
+
+            <input
+                {...register("password")}
+                type="password"
+                placeholder="Password"
+                required
+            />
+            <input type="submit" value="Create Account"/>
         </form>
-    )
+    );
 }
