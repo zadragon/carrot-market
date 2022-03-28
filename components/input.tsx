@@ -1,4 +1,4 @@
-import type { UseFormRegisterReturn } from "react-hook-form";
+import type {UseFormRegisterReturn} from "react-hook-form";
 
 interface InputProps {
     label: string;
@@ -10,13 +10,13 @@ interface InputProps {
 }
 
 export default function Input({
-                                  label,
-                                  name,
-                                  kind = "text",
-                                  register,
-                                  type,
-                                  required,
-                              }: InputProps) {
+                  label,
+                  name,
+                  kind = "text",
+                  register,
+                  type,
+                  required,
+              }: InputProps) {
     return (
         <div>
             <label
@@ -55,7 +55,8 @@ export default function Input({
             ) : null}
             {kind === "phone" ? (
                 <div className="flex rounded-md shadow-sm">
-          <span className="flex items-center justify-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 select-none text-sm">
+          <span
+              className="flex items-center justify-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 select-none text-sm">
             +82
           </span>
                     <input

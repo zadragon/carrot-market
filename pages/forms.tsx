@@ -10,6 +10,7 @@ interface LoginForm {
 export default function Forms() {
     const {register, handleSubmit} = useForm<LoginForm>();
     const onValid = (data:LoginForm) => {
+
         console.log('inm here')
     }
     const onInvalid = (errors: FieldErrors) => {
