@@ -19,7 +19,7 @@ export default function Forms() {
     return (
         <form onSubmit={handleSubmit(onValid, onInvalid)}>
             <input
-                {...register("usename", {
+                {...register("username", {
                     required: "Username is required",
                     minLength: {
                         message:"the username should be longer than 5 chars",
