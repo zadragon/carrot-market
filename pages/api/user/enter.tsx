@@ -15,7 +15,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         },
         update: {},
     });
-
     return res.status(200).end();
 }
 
