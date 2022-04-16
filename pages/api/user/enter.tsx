@@ -15,7 +15,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         },
         update: {},
     });
+    console.log(user);
+
     return res.status(200).end();
+    //
 }
 
 export default withHandler("POST", handler);
