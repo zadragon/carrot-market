@@ -1,21 +1,42 @@
-import mail from "@sendgrid/mail";
 import twilio from "twilio";
 import { NextApiRequest, NextApiResponse } from "next";
 import withHandler, { ResponseType } from "@libs/server/withHandler";
 import client from "@libs/server/client";
 
+import nodemailer from "nodemailer";
+import mgTransport from "nodemailer-mailgun-transport";
 
-mail.setApiKey(process.env.SENDGRID_KEY!);
+// 이메일을 보내는 논리적인 동작을 구현했습니다.
+const sendMail = (email:any) => {
+    const options = {
+        auth: {
+            api_key: process.env.MAILGUN_API,
+            domain: process.env.MAILGUN_DOMAIN,
+        },
+    };
+    const client = nodemailer.createTransport(mgTransport(options));
+    return client
+        .sendMail(email)
+        .then(() => {
+            console.log("Message sent!");
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
 
-const nodemailer = require("nodemailer");
-
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.GMAIL_ID,
-        pass: process.env.GMAIL_PWD,
-    },
-});
+// 메일에 대한 내용을 다룹니다. sendMail을 통해 메일을 보냅니다.
+const sendSecretMail = (address:string, secret:string) => {
+    const email = {
+        from: "test@edupopkorn.com",
+        to: address,
+        subject: "Login Secret for Prismagram 🚀",
+        html: `<h1>hello! your login secret is ${secret}.</h1>
+    <h2>Copy paste on the web/app to Login</h2>`,
+    };
+    console.log(email)
+    return sendMail(email);
+};
 
 const twilioClient = twilio(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 
@@ -51,18 +72,7 @@ async function handler(
         });
         console.log(message);
     }else if (email) {
-        const sendEmail = await transporter.sendMail({
-            from: `ABC <thurpia01@gmail.com>`,
-            to: email,
-            subject: 'token',
-            text: `your login token is ${payload}`,
-            html: `
-          <div style="text-align: center;">
-            <h3 style="color: #FA5882">ABC</h3>
-            <br />
-            <p>your login token is ${payload}</p>
-          </div>
-      `})
+        const email = await sendSecretMail("yongs7786@gmail.com","test words")
             .then((result: any) => console.log(result))
             .catch((err: any) => console.log(err))
     }

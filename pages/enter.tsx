@@ -129,6 +129,7 @@ const Enter: NextPage = () => {
                     </div>
                 </div>
             </div>
+            <div className="text-sm text-gray-500 font-medium text-center mt-11"><p>copyrightⓒ 2022 All rights reserved by Jayong-Lee</p></div>
         </div>
     );
 };
