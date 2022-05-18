@@ -14,8 +14,8 @@ const sendMail = (email:any) => {
             domain: process.env.MAILGUN_DOMAIN,
         },
     };
-    const client = nodemailer.createTransport(mgTransport(options));
-    return client
+    const clientt = nodemailer.createTransport(mgTransport(options));
+    return clientt
         .sendMail(email)
         .then(() => {
             console.log("Message sent!");
@@ -32,7 +32,7 @@ const sendSecretMail = (address:string, secret:string) => {
         to: address,
         subject: "Login Secret for Prismagram 🚀",
         html: `<h1>hello! your login secret is ${secret}.</h1>
-    <h2>Copy paste on the web/app to Login</h2>`,
+        <h2>Copy paste on the web/app to Login</h2>`,
     };
     console.log(email)
     return sendMail(email);
